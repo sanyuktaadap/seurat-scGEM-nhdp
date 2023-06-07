@@ -56,3 +56,4 @@ rsconnect/
 renv.*
 renv/*
 *.RProfile
+*.h5Seurat
