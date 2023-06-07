@@ -5,8 +5,6 @@ source("model_windows.R")
 
 srt = SeuratDisk::LoadH5Seurat("pbmc3k.h5Seurat")
 
-class(srt)
-
 set.seed(111)
 X = srt@assays$RNA@counts
 X@x = log2(X@x + 1)
@@ -14,7 +12,7 @@ X@x = log2(X@x + 1)
 # X@x = ifelse(X@x > 0, 1)
 meta = srt@meta.data
 if (length(grep("T", levels(Idents(srt)))) > 0) {
-    meta$Cell_subtype = Idents(srt)
+  meta$Cell_subtype = Idents(srt)
 }
 umap = srt@reductions$umap@cell.embeddings
 meta = data.frame(meta, UMAP_1 = umap[, 1], UMAP_2 = umap[, 2])
