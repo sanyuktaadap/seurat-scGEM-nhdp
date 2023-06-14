@@ -22,17 +22,13 @@ if (ext == "RData") {
 set.seed(111)
 X = srt@assays$RNA@counts
 
-if (length(X@x[X@x == 0]) > 0) { 
-  X@x = log2(X@x + 1)
-} else {
-  X@x = log2(X@x)
-}
-#change the matrix to binary matrix: change X to be binary
+# Making X binary.
+# X is a sparse matrix with @x containing all non-zero values.
+# Thus, can directly convert all of them to 1 to make it binary.
 X_binary <- X
-X_binary@x[X_binary@x > 0] <- 1
+X_binary@x <- rep(1, length(X_binary@x))
 
 umap = srt@reductions$umap@cell.embeddings
-
 
 model_paras = list(b0 = 0.01, g1 = 5, g2 = 1, g3 = 1/3, g4 = 2/3)
 # if you have in-house housekeeping gene list, set to FALSE
