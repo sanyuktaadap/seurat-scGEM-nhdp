@@ -3,7 +3,7 @@ library(magrittr)
 # source("model.R")
 source("model_windows.R")
 
-srt = SeuratDisk::LoadH5Seurat("pbmc3k.h5Seurat")
+srt = SeuratDisk::LoadH5Seurat("datasets/pbmc3k.h5Seurat")
 
 set.seed(111)
 X = srt@assays$RNA@counts

@@ -3,7 +3,7 @@ library(magrittr)
 
 source("model_windows.R")
 
-path <- ("CRC_primarytumor_TNK_intersectfeats_Seuratobj.RData")
+path <- ("datasets/CRC_primarytumor_TNK_intersectfeats_Seuratobj.RData")
 
 # Using escape character to split on period instead of regex.
 path_split <- strsplit(path, split = "\\.")
