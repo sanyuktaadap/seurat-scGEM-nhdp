@@ -3,7 +3,7 @@ library(tibble)
 
 # Helper functions
 get_file_path <- function(prefix, filename, ext = "rds") {
-  dir.create(prefix)
+  dir.create(prefix, recursive = TRUE)
   path <- sprintf("%s/%s.%s", prefix, filename, "rds")
   
   return(path)
