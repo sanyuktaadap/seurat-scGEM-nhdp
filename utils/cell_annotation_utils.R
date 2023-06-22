@@ -2,9 +2,11 @@ library(dplyr)
 library(tibble)
 
 # Helper functions
+
+# Gets the complete file path. Creates necessary folders as well.
 get_file_path <- function(prefix, filename, ext = "rds") {
   dir.create(prefix, recursive = TRUE)
-  path <- sprintf("%s/%s.%s", prefix, filename, "rds")
+  path <- sprintf("%s/%s.%s", prefix, filename, ext)
   
   return(path)
 }
@@ -35,6 +37,8 @@ save_exp_data_by_type <- function(cell_exp_data, cell_type_annot, filepath, file
   
   # saving each cell type separately
   for (i in seq_along(split_data)) {
+    print(sprintf("Solving %s type", names(split_data)[i]))
+    
     path_i <- sprintf("%s/%s", filepath, names(split_data)[i])
     split_data_i <- split_data[i][[1]]
     split_data_i <- subset(split_data_i, select = -c(Cell_type))
