@@ -30,5 +30,5 @@ inferred_data = minibatchInfer(query_df_sparse,
                                max_est = 50, 
                                subtree_size = c(1, 20),
                                batch_size = 1500, 
-                               n_epoch = 50, 
+                               n_epoch = 1,
                                learning_rate = 0.01)
