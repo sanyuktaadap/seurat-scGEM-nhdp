@@ -1,5 +1,7 @@
 load("inference/R_nHDPresults_binary_tnk_three_layer_20230620.RData")
 
+library(msigdbr)
+
 # GEMs v/s Cells
 value_matrix <- nHDP_trained_mb$count_matrix
 
@@ -12,7 +14,7 @@ num_gem <- dim(nHDP_trained_mb$centroids)[2]
 top_50_gene_name_gem <- matrix(0, num_gem, 50)
 rownames(top_50_gene_name_gem) <- paste("tnk_", seq(1, num_gem, 1), sep="")
 
-for (i in 1:num_gene) {
+for (i in 1:num_gem) {
   # in each column of gene vs gem matrix
   temp_value <- nHDP_trained_mb$centroids[,i]
   # order the values in decreasing order
@@ -23,3 +25,4 @@ for (i in 1:num_gene) {
   top_50_gene_name_gem[i,] <- temp_gene_name
 }
 
+# write.csv(top_50_gene_name_gem,"inference/nhdp_3_layer_tnk_gem_top_50_genes.csv")
