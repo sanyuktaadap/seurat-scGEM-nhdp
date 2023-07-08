@@ -12,6 +12,8 @@ if (file.exists(SPARSE_PATH)) {
   # Storing rownames and colnames. Storing data as sparse matrix.
   query_df_colnames <- colnames(query_df)
   query_df_rownames <- rownames(query_df)
+  
+  # Converting the matrix to a sparse matrix
   query_df_sparse <- bigDataFrameSparsify(query_df)
   
   save(list = c("query_df_colnames", "query_df_rownames", "query_df_sparse"),
@@ -19,6 +21,7 @@ if (file.exists(SPARSE_PATH)) {
   
   rm(query_df)
 }
+
 
 load("inference/R_nHDPresults_binary_tnk_three_layer_20230620.RData")
 rm(X, nHDP_init)
