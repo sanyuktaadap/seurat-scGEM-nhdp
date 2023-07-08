@@ -58,3 +58,4 @@ renv/*
 *.RProfile
 *.h5Seurat
 datasets/*
+.RData*
