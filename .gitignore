@@ -59,3 +59,4 @@ renv/*
 *.h5Seurat
 datasets/*
 .vscode
+.RData*
