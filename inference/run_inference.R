@@ -39,9 +39,5 @@ inferred_data = minibatchInfer(query_df_sparse,
                                n_epoch = 1,
                                learning_rate = 0.01)
 
-
-value_matrix <- inferred_data$count_matrix
-gene_by_gem <- inferred_data$centroids
-
-save(list = c("value_matrix", "gene_by_gem"),
+save(list = ("inferred_data"),
      file = "inference/lung_cancer_TNK.RData")

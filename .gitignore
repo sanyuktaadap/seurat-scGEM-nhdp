@@ -60,3 +60,4 @@ renv/*
 datasets/*
 .vscode
 .RData*
+*.csv
