@@ -60,6 +60,10 @@ bigDataFrameSparsify <- function(df, split = 1000) {
       sparse_df <- cbind(sparse_df, sparse_df_i)
     }
   }
-  
+
+  # Adding row names and col names to the sparse df from the original df
+  colnames(sparse_df) <- colnames(df)
+  rownames(sparse_df) <- rownames(df)
+
   return(sparse_df)
 }
