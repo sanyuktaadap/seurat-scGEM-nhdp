@@ -23,12 +23,12 @@ for (i in 1:num_gem) {
   # extract the gene names based on the indices [1:50]
   temp_gene_name <- gene_name[temp_index[1:50]]
   # assign values to the i-th row on top_50_gene_name_gem matrix
-  top_50_gene_name_gem[i,] <- temp_gene_name
+  top_50_gene_name_gem[i, ] <- temp_gene_name
 }
 
 
 # Saving files
-write.csv(top_50_gene_name_gem,"inference/lc_tnk_gem_top_50_genes.csv")
+write.csv(top_50_gene_name_gem, "inference/lc_tnk_gem_top_50_genes.csv")
 
 save(list = ("value_matrix"),
      file = "inference/lung_cancer_TNK_value_matrix.csv")
