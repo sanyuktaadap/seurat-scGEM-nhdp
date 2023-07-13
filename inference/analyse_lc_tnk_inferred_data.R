@@ -26,4 +26,12 @@ for (i in 1:num_gem) {
   top_50_gene_name_gem[i,] <- temp_gene_name
 }
 
+
+# Saving files
 write.csv(top_50_gene_name_gem,"inference/lc_tnk_gem_top_50_genes.csv")
+
+save(list = ("value_matrix"),
+     file = "inference/lung_cancer_TNK_value_matrix.csv")
+
+save(list = ("gene_by_gem"),
+     file = "inference/lung_cancer_TNK_gene_by_gem.csv")
