@@ -62,5 +62,3 @@ datasets/*
 .RData*
 *.csv
 model/*
-inference/crc_tnk_umap
-inference/lc_tnk_umap
