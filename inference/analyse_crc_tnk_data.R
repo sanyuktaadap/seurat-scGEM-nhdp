@@ -25,4 +25,4 @@ for (i in 1:num_gem) {
   top_50_gene_name_gem[i,] <- temp_gene_name
 }
 
-# write.csv(top_50_gene_name_gem,"inference/nhdp_3_layer_tnk_gem_top_50_genes.csv")
+write.csv(top_50_gene_name_gem,"inference/nhdp_3_layer_tnk_gem_top_50_genes.csv")
