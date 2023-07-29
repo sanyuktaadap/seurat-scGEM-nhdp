@@ -164,15 +164,16 @@ merged_crc_lc <- ScaleData(merged_crc_lc, features = all.genes)
 merged_crc_lc <- RunHarmony(merged_crc_lc, "samples")
 
 VizDimLoadings(merged_crc_lc, dims = 1:2, reduction = "pca")
-DimPlot(merged_crc_lc, reduction = "pca")
+DimPlot(merged_crc_lc, reduction = "pca", raster = FALSE)
 DimHeatmap(merged_crc_lc, dims = 1, cells = 500, balanced = TRUE)
 
 # Heatmap of the most important features for each PC
 DimHeatmap(merged_crc_lc, dims = 1:15, cells = 500, balanced = TRUE)
 
+
 # Cluster the cells
-merged_crc_lc <- FindNeighbors(merged_crc_lc, dims = 1:10)
-merged_crc_lc <- FindClusters(merged_crc_lc, resolution = 0.5)
+# merged_crc_lc <- FindNeighbors(merged_crc_lc, dims = 1:10)
+# merged_crc_lc <- FindClusters(merged_crc_lc, resolution = 0.5)
 
 
 # Run non-linear dimension reduction
