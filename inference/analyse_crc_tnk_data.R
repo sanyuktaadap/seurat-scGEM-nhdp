@@ -1,6 +1,5 @@
 load("inference/R_nHDPresults_binary_tnk_three_layer_20230620.RData")
 
-library(msigdbr)
 
 # GEMs v/s Cells
 value_matrix <- nHDP_trained_mb$count_matrix
@@ -26,3 +25,59 @@ for (i in 1:num_gem) {
 }
 
 write.csv(top_50_gene_name_gem,"inference/nhdp_3_layer_tnk_gem_top_50_genes.csv")
+
+
+# Perform Transcription Factor Analysis
+
+
+# Peform Signalling Pathway Analysis
+
+# Import and preprocess gene expression data
+gene_sets <- read.csv('inference/crc_tnk_top_50_genes_per_gem.csv', sep = ',')
+gene_sets <- t(gene_sets)
+
+library(biomaRt)
+library(clusterProfiler)
+library(org.Hs.eg.db)
+
+convert_to_gene_ids <- function(gene_set) {
+  gene_ids <- select(org.Hs.eg.db, keys = gene_set, keytype = "SYMBOL", column = "ENTREZID")
+  return(gene_ids$ENTREZID)
+}
+
+perform_signaling_pathway_analysis <- function(gene_ids) {
+  # Perform KEGG pathway analysis using enrichKEGG function
+  kegg_result <- enrichKEGG(gene = gene_ids,
+                            organism = "hsa",
+                            pvalueCutoff = 0.05,
+                            qvalueCutoff = 0.2)
+
+  return(kegg_result$Description)
+}
+
+n_row <- 2: nrow(gene_sets)
+n_col <- 1: ncol(gene_sets)
+spa_result <- list()
+for (i in n_col){
+  gene_names <- gene_sets[n_row, i]
+  gene_ids <- convert_to_gene_ids(gene_names)
+  pathway_result <- perform_signaling_pathway_analysis(gene_ids)
+  spa_result[[i]] <- pathway_result
+ }
+
+max_length <- max(sapply(spa_result, length))
+
+# Pad the shorter pathway results with NA values
+padded_spa_result <- lapply(spa_result, function(x) {
+  if (length(x) < max_length) {
+    c(x, rep(NA, max_length - length(x)))
+  } else {
+    x
+  }
+})
+
+# Convert the list to a data frame
+spa_result_df <- as.data.frame(padded_spa_result)
+
+# Write the data frame to a CSV file
+write.csv(spa_result_df, file = "spa_results.csv", row.names = FALSE)
