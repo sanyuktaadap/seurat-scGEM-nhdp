@@ -89,4 +89,4 @@ padded_spa_result <- lapply(spa_result, function(x) {
 spa_result_df <- as.data.frame(padded_spa_result)
 
 # Write the data frame to a CSV file
-write.csv(spa_result_df, file = "spa_results.csv", row.names = FALSE)
+write.csv(spa_result_df, file = "inference/results/spa_results.csv", row.names = FALSE)
