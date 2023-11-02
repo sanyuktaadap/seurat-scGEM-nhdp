@@ -1,6 +1,5 @@
 load("inference/R_nHDPresults_binary_tnk_three_layer_20230620.RData")
 
-
 # GEMs v/s Cells
 value_matrix <- nHDP_trained_mb$count_matrix
 
