@@ -22,12 +22,12 @@ colnames(lc_gene_by_gem_mat) <- paste("lc_tnk_",
 # Create an empty data frame
 cosine_values <- list()
 
-for (i in seq(1,3)) {
+for (i in seq(1,85)) {
     crc_idx <- order(crc_gene_by_gem_mat[, i], decreasing = TRUE)
     lc_idx <- order(lc_gene_by_gem_mat[, i], decreasing = TRUE)
 
-    crc_top_50_idx <- crc_idx
-    lc_top_50_idx <- lc_idx
+    crc_top_50_idx <- crc_idx[1:50]
+    lc_top_50_idx <- lc_idx[1:50]
 
     crc_sorted_values <- crc_gene_by_gem_mat[crc_top_50_idx, i]
     lc_sorted_values <- lc_gene_by_gem_mat[lc_top_50_idx, i]
