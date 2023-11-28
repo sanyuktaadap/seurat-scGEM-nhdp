@@ -23,3 +23,6 @@
 ##### Analyse inferred data with [this](./inference/analyse_lc_tnk_inferred_data.R) script
 ##### Analyse training data with [this](./inference/analyse_crc_tnk_data.R) script
 ##### Create UMAP plots using Seurat with [this](./inference/tnk_plots.R) script
+
+
+### Final findings can be found in the [report](./report.md)
