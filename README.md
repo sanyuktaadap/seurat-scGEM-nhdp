@@ -20,9 +20,9 @@
 ### Running Inference
 ##### Use a different single-cell dataset to infer with the trained model
 ##### Script for inference can be found [here](./inference/run_inference.R)
-##### Analyse inferred data with [this](./inference/analyse_lc_tnk_inferred_data.R) script
-##### Analyse training data with [this](./inference/analyse_crc_tnk_data.R) script
-##### Create UMAP plots using Seurat with [this](./inference/tnk_plots.R) script
+##### Analyse inferred data with [analyse_lc_tnk_inferred_data](./inference/analyse_lc_tnk_inferred_data.R) script
+##### Analyse training data with [analyse_crc_tnk_data](./inference/analyse_crc_tnk_data.R) script
+##### Create UMAP plots using Seurat with [tnk_plots](./inference/tnk_plots.R) script
 
 
 ### Final findings can be found in the [report](./report.md)
