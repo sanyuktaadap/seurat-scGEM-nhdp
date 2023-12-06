@@ -1,3 +1,4 @@
+# Load the inferred model
 load("inference/R_nHDPresults_binary_tnk_three_layer_20230620.RData")
 
 # GEMs v/s Cells
@@ -9,12 +10,18 @@ rownames(value_matrix) <- paste(
   seq(1, dim(nHDP_trained_mb$centroids)[2], 1),
   sep = "")
 
-# Create and Save top50 genes for each GEM
+### Create and Save top50 genes for each GEM
+
+# Extract gene names
 gene_name <- nHDP_trained_mb$gene
+# Extract total number of GEMs
 num_gem <- dim(nHDP_trained_mb$centroids)[2]
+# Create an empty matrix with #cols = #gems and #rows = 50
 top_50_gene_name_gem <- matrix(0, num_gem, 50)
+# Each row is a different TNK gem, so assign row names as tnk_1, tnk_2, tnk_3, etc.
 rownames(top_50_gene_name_gem) <- paste("tnk_", seq(1, num_gem, 1), sep = "")
 
+# Iterating over each gem
 for (i in 1:num_gem) {
   # in each column of gene vs gem matrix
   temp_value <- nHDP_trained_mb$centroids[,i]
@@ -26,15 +33,12 @@ for (i in 1:num_gem) {
   top_50_gene_name_gem[i, ] <- temp_gene_name
 }
 
+# Saving file into csv
 write.csv(
   top_50_gene_name_gem,
   "inference/nhdp_3_layer_tnk_gem_top_50_genes.csv")
 
-
-# Perform Transcription Factor Analysis
-
-
-# Peform Signalling Pathway Analysis
+### Peform Signalling Pathway Analysis
 
 # Import and preprocess gene expression data
 gene_sets <- read.csv('inference/crc_tnk_top_50_genes_per_gem.csv', sep = ',')
