@@ -43,10 +43,6 @@ write.csv(
 <<<<<<< HEAD
 # Import gene expression data
 gene_sets <- read.csv('inference/nhdp_3_layer_tnk_gem_top_50_genes.csv', sep = ',')
-=======
-# Import and preprocess gene expression data
-gene_sets <- read.csv('inference/crc_tnk_top_50_genes_per_gem.csv', sep = ',')
->>>>>>> 0d23045d68e5793f80b69c67cb3fb91a46edcb6b
 gene_sets <- t(gene_sets)
 
 # For converting gene symbols to Entrez gene IDs
