@@ -70,8 +70,8 @@ perform_signaling_pathway_analysis <- function(gene_ids) {
                             organism = "hsa",
                             pvalueCutoff = 0.05,
                             qvalueCutoff = 0.2)
-
-  return(kegg_result$Description)
+  return(kegg_result)
+  # return(kegg_result$Description)
 }
 
 n_row <- 2: nrow(gene_sets)
