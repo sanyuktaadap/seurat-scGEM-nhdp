@@ -40,7 +40,6 @@ write.csv(
 
 ### Peform Signalling Pathway Analysis
 
-<<<<<<< HEAD
 # Import gene expression data
 gene_sets <- read.csv('inference/nhdp_3_layer_tnk_gem_top_50_genes.csv', sep = ',')
 gene_sets <- t(gene_sets)
@@ -66,8 +65,7 @@ perform_signaling_pathway_analysis <- function(gene_ids) {
                             organism = "hsa",
                             pvalueCutoff = 0.05,
                             qvalueCutoff = 0.2)
-  return(kegg_result)
-  # return(kegg_result$Description)
+  return(kegg_result$Description)
 }
 
 n_row <- 2: nrow(gene_sets)
